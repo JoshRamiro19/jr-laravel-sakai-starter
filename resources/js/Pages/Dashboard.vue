@@ -1,15 +1,14 @@
 
 <script setup>
 import { Head } from '@inertiajs/vue3';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import Button from 'primevue/button';
+import AppLayout from '@/Layouts/Sakai/AppLayout.vue';import Button from 'primevue/button';
 import Card from 'primevue/card';
 </script>
 
 <template>
     <Head title="Dashboard" />
 
-    <AuthenticatedLayout>
+    <AppLayout>
         <div class="p-6">
             <Card>
                 <template #title>
@@ -29,5 +28,5 @@ import Card from 'primevue/card';
                 </template>
             </Card>
         </div>
-    </AuthenticatedLayout>
+    </AppLayout>
 </template>
