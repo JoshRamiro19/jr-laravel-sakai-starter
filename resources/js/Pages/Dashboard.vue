@@ -1,7 +1,8 @@
 
 <script setup>
 import { Head } from '@inertiajs/vue3';
-import AppLayout from '@/Layouts/Sakai/AppLayout.vue';import Button from 'primevue/button';
+import AppLayout from '@/Layouts/Sakai/AppLayout.vue';
+import Button from 'primevue/button';
 import Card from 'primevue/card';
 </script>
 
@@ -12,7 +13,7 @@ import Card from 'primevue/card';
         <div class="p-6">
             <Card>
                 <template #title>
-                    Welcome to JR Starter
+                    Welcome to JR SkyFlow
                 </template>
 
                 <template #content>

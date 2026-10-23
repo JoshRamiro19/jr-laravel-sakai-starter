@@ -13,6 +13,10 @@ import 'primeicons/primeicons.css';
 import './assets/styles.scss';
 import { definePreset } from '@primeuix/themes';
 
+import { initializeTheme } from './Layouts/Sakai/composables/layout';
+
+import { initializeColorTheme } from './Layouts/Sakai/composables/themeEngine';
+
 const appName = import.meta.env.VITE_APP_NAME || 'JR Starter';
 const SkyFlowPreset = definePreset(Aura, {
     semantic: {
@@ -28,10 +32,29 @@ const SkyFlowPreset = definePreset(Aura, {
             800: '#075985',
             900: '#0c4a6e',
             950: '#082f49'
+        },
+        colorScheme: {
+            light: {
+                primary: {
+                    color: '{primary.700}',
+                    contrastColor: '#ffffff',
+                    hoverColor: '{primary.800}',
+                    activeColor: '{primary.900}'
+                }
+            },
+            dark: {
+                primary: {
+                    color: '{primary.300}',
+                    contrastColor: '{surface.900}',
+                    hoverColor: '{primary.200}',
+                    activeColor: '{primary.100}'
+                }
+            }
         }
     }
 });
 
+initializeTheme();
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -43,7 +66,7 @@ createInertiaApp({
         ),
 
     setup({ el, App, props, plugin }) {
-        return createApp({
+        const app = createApp({
             render: () => h(App, props),
         })
             .use(plugin)
@@ -55,11 +78,13 @@ createInertiaApp({
                         darkModeSelector: '.app-dark',
                     },
                 },
-            })
-            .mount(el);
+            });
+
+        initializeColorTheme();
+        app.mount(el);
     },
 
     progress: {
-        color: '#0284C7',
+        color: 'var(--jr-primary)',
     },
 });

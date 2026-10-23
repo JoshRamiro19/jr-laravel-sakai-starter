@@ -4,6 +4,8 @@ import { Link, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 import { useLayout } from './composables/layout';
 
+import ThemeSettings from './ThemeSettings.vue';
+
 const page = usePage();
 
 const { toggleMenu, toggleDarkMode, isDarkTheme } = useLayout();
@@ -17,6 +19,7 @@ const logoutUrl = '/logout';
 
 <template>
     <div class="layout-topbar">
+
         <div class="layout-topbar-logo-container">
             <!-- Responsive sidebar toggle -->
             <button
@@ -33,12 +36,14 @@ const logoutUrl = '/logout';
                 <span class="jr-brand-icon">JR</span>
 
                 <span class="jr-brand-text">
-                    JR <span class="jr-brand-accent">SkyFlow</span>
+                    JR <span class="jr-theme-heading">SkyFlow</span>
                 </span>
             </Link>
         </div>
 
         <div class="layout-topbar-actions">
+            <ThemeSettings />
+
             <!-- Dark mode toggle -->
             <button
                 type="button"
@@ -88,8 +93,8 @@ const logoutUrl = '/logout';
     width: 2.4rem;
     height: 2.4rem;
     border-radius: 0.7rem;
-    background: linear-gradient(135deg, #0284c7, #38bdf8);
-    color: white;
+    background: var(--jr-button-background);
+    color: var(--jr-accent-contrast);
     font-weight: 800;
     font-size: 0.9rem;
     letter-spacing: -0.04em;
@@ -99,10 +104,6 @@ const logoutUrl = '/logout';
     font-size: 1.15rem;
     font-weight: 700;
     white-space: nowrap;
-}
-
-.jr-brand-accent {
-    color: #0284c7;
 }
 
 .jr-profile-link {

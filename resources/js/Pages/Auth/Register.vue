@@ -117,7 +117,7 @@ const submit = () => {
 
                     <Link
                         :href="route('login')"
-                        class="ml-1 font-semibold text-sky-600 transition hover:text-sky-700 hover:underline dark:text-sky-400 dark:hover:text-sky-300"
+                        class="jr-theme-text ml-1 font-semibold transition hover:underline"
                     >
                         Sign in
                     </Link>

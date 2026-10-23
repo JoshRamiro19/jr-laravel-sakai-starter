@@ -1,7 +1,7 @@
 
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
-import { ref } from 'vue';
+
 
 defineProps({
     canLogin: {
@@ -14,11 +14,9 @@ defineProps({
     },
 });
 
-const darkMode = ref(false);
+import { useLayout } from '@/Layouts/Sakai/composables/layout';
 
-const toggleDarkMode = () => {
-    darkMode.value = !darkMode.value;
-};
+const { isDarkTheme, toggleDarkMode } = useLayout();
 
 const features = [
     {
@@ -57,49 +55,46 @@ const features = [
 <template>
     <Head title="JR SkyFlow - Laravel Starter Kit" />
 
-    <div
-        :class="{ 'dark': darkMode }"
-        class="min-h-screen"
-    >
-        <div class="min-h-screen bg-sky-50 text-slate-900 transition-colors dark:bg-slate-950 dark:text-white">
+    <div class="min-h-screen">
+        <div class="min-h-screen bg-slate-50 text-slate-900 transition-colors dark:bg-slate-950 dark:text-white">
 
             <!-- Navigation -->
-            <header class="sticky top-0 z-50 border-b border-sky-100 bg-white/90 backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/90">
+            <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/90">
                 <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
                     <Link href="/" class="flex items-center gap-3">
-                        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-sky-600 to-sky-400 font-extrabold text-white shadow-lg shadow-sky-500/20">
+                        <div class="jr-theme-background flex h-10 w-10 items-center justify-center rounded-xl font-extrabold shadow-lg">
                             JR
                         </div>
                         <span class="text-xl font-bold tracking-tight">
-                            JR <span class="text-sky-600 dark:text-sky-400">SkyFlow</span>
+                            JR <span class="jr-theme-heading">SkyFlow</span>
                         </span>
                     </Link>
 
                     <div class="flex items-center gap-3">
-                        <a href="#features" class="hidden text-sm font-medium text-slate-600 hover:text-sky-600 dark:text-slate-300 sm:inline">
+                        <a href="#features" class="jr-theme-link hidden text-sm font-medium text-slate-600 dark:text-slate-300 sm:inline">
                             Features
                         </a>
 
                         <button
                             type="button"
-                            class="rounded-xl p-3 text-slate-600 hover:bg-sky-100 dark:text-slate-200 dark:hover:bg-slate-800"
+                            class="rounded-xl p-3 text-slate-600 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
                             aria-label="Toggle dark mode"
                             @click="toggleDarkMode"
                         >
-                            <i :class="darkMode ? 'pi pi-sun' : 'pi pi-moon'"></i>
+                            <i :class="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"></i>
                         </button>
 
                         <Link
                             v-if="canLogin"
                             href="/login"
-                            class="hidden rounded-xl px-4 py-2 text-sm font-semibold text-slate-700 hover:text-sky-600 dark:text-slate-200 sm:inline"
+                            class="jr-theme-link hidden rounded-xl px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 sm:inline"
                         >
                             Login
                         </Link>
 
                         <Link
                             :href="canRegister ? '/register' : canLogin ? '/login' : '#features'"
-                            class="rounded-xl bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-700"
+                            class="jr-theme-button rounded-xl px-5 py-2.5 text-sm font-semibold shadow-lg"
                         >
                             Get Started
                         </Link>
@@ -110,17 +105,17 @@ const features = [
             <!-- Hero -->
             <main>
                 <section class="relative overflow-hidden px-6 pb-20 pt-24 sm:pt-32">
-                    <div class="pointer-events-none absolute left-1/2 top-10 h-96 w-96 -translate-x-1/2 rounded-full bg-sky-300/30 blur-3xl dark:bg-sky-700/20"></div>
+                    <div class="jr-theme-glow pointer-events-none absolute left-1/2 top-10 h-96 w-96 -translate-x-1/2 rounded-full blur-3xl"></div>
 
                     <div class="relative mx-auto max-w-5xl text-center">
-                        <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white px-4 py-2 text-xs font-semibold text-sky-700 dark:border-sky-800 dark:bg-slate-900 dark:text-sky-300">
+                        <div class="jr-theme-border jr-theme-text mb-7 inline-flex items-center gap-2 rounded-full border bg-white px-4 py-2 text-xs font-semibold dark:bg-slate-900">
                             <i class="pi pi-sparkles"></i>
                             Laravel 13 + Vue 3 + Inertia + PrimeVue + Sakai
                         </div>
 
                         <h1 class="mx-auto max-w-4xl text-5xl font-extrabold leading-tight tracking-tight sm:text-7xl">
                             Build faster.
-                            <span class="block bg-gradient-to-r from-sky-600 to-cyan-400 bg-clip-text text-transparent">
+                            <span class="jr-theme-heading block">
                                 Create beautifully.
                             </span>
                         </h1>
@@ -134,7 +129,7 @@ const features = [
                         <div class="mt-9 flex flex-wrap justify-center gap-4">
                             <Link
                                 :href="canRegister ? '/register' : canLogin ? '/login' : '#features'"
-                                class="inline-flex items-center gap-3 rounded-xl bg-sky-600 px-7 py-3.5 font-semibold text-white shadow-xl shadow-sky-500/20 transition hover:-translate-y-0.5 hover:bg-sky-700"
+                                class="jr-theme-button inline-flex items-center gap-3 rounded-xl px-7 py-3.5 font-semibold shadow-xl transition hover:-translate-y-0.5"
                             >
                                 Get Started
                                 <i class="pi pi-arrow-right"></i>
@@ -142,7 +137,7 @@ const features = [
 
                             <a
                                 href="#features"
-                                class="inline-flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-7 py-3.5 font-semibold text-slate-700 transition hover:border-sky-300 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                                class="jr-theme-card inline-flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-7 py-3.5 font-semibold text-slate-700 transition dark:border-slate-700 dark:bg-slate-900 dark:text-white"
                             >
                                 Explore Features
                                 <i class="pi pi-angle-down"></i>
@@ -150,7 +145,7 @@ const features = [
                         </div>
 
                         <!-- Dashboard Preview -->
-                        <div class="mx-auto mt-20 max-w-5xl overflow-hidden rounded-2xl border border-sky-200 bg-white p-3 shadow-2xl shadow-sky-900/10 dark:border-slate-700 dark:bg-slate-900">
+                        <div class="jr-theme-border mx-auto mt-20 max-w-5xl overflow-hidden rounded-2xl border bg-white p-3 shadow-2xl dark:bg-slate-900">
                             <div class="flex items-center gap-2 border-b border-slate-100 px-3 pb-3 dark:border-slate-700">
                                 <span class="h-3 w-3 rounded-full bg-red-400"></span>
                                 <span class="h-3 w-3 rounded-full bg-amber-400"></span>
@@ -161,7 +156,7 @@ const features = [
                             <div class="flex min-h-64 gap-4 pt-4 text-left sm:min-h-80">
                                 <aside class="hidden w-48 shrink-0 rounded-xl bg-slate-50 p-4 dark:bg-slate-800 sm:block">
                                     <div class="mb-6 text-xs font-bold text-slate-400">WORKSPACE</div>
-                                    <div class="rounded-lg bg-sky-100 px-3 py-2 text-sm font-semibold text-sky-700 dark:bg-sky-900/40 dark:text-sky-300">
+                                    <div class="jr-theme-soft rounded-lg px-3 py-2 text-sm font-semibold">
                                         <i class="pi pi-home mr-2"></i> Dashboard
                                     </div>
                                     <div class="mt-3 px-3 text-sm text-slate-500 dark:text-slate-400">
@@ -186,7 +181,7 @@ const features = [
                                             class="rounded-xl border border-slate-100 p-3 dark:border-slate-700"
                                         >
                                             <div class="text-xs text-slate-500 dark:text-slate-400">{{ stat.label }}</div>
-                                            <div class="mt-2 text-xl font-bold text-sky-600 dark:text-sky-400">{{ stat.value }}</div>
+                                            <div class="jr-theme-text mt-2 text-xl font-bold">{{ stat.value }}</div>
                                         </div>
                                     </div>
 
@@ -195,12 +190,12 @@ const features = [
                                         <svg viewBox="0 0 500 120" class="h-28 w-full" preserveAspectRatio="none">
                                             <defs>
                                                 <linearGradient id="skyflowChart" x1="0" y1="0" x2="0" y2="1">
-                                                    <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.3" />
-                                                    <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+                                                    <stop class="jr-theme-chart-stop" offset="0%" stop-opacity="0.3" />
+                                                    <stop class="jr-theme-chart-stop" offset="100%" stop-opacity="0" />
                                                 </linearGradient>
                                             </defs>
                                             <path d="M0 95 L60 75 L120 83 L180 42 L240 57 L300 25 L360 40 L420 12 L500 22 L500 120 L0 120 Z" fill="url(#skyflowChart)" />
-                                            <path d="M0 95 L60 75 L120 83 L180 42 L240 57 L300 25 L360 40 L420 12 L500 22" fill="none" stroke="#0284c7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path class="jr-theme-chart-line" d="M0 95 L60 75 L120 83 L180 42 L240 57 L300 25 L360 40 L420 12 L500 22" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                     </div>
                                 </div>
@@ -217,7 +212,7 @@ const features = [
                 <section id="features" class="bg-white px-6 py-24 dark:bg-slate-900">
                     <div class="mx-auto max-w-7xl">
                         <div class="mb-14 text-center">
-                            <span class="text-sm font-bold uppercase tracking-widest text-sky-600 dark:text-sky-400">Features</span>
+                            <span class="jr-theme-text text-sm font-bold uppercase tracking-widest">Features</span>
                             <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
                                 Everything you need to get started
                             </h2>
@@ -230,9 +225,9 @@ const features = [
                             <div
                                 v-for="feature in features"
                                 :key="feature.title"
-                                class="rounded-2xl border border-slate-200 p-7 transition hover:-translate-y-1 hover:border-sky-300 hover:shadow-lg dark:border-slate-700 dark:bg-slate-800"
+                                class="jr-theme-card rounded-2xl border border-slate-200 p-7 transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-700 dark:bg-slate-800"
                             >
-                                <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-xl text-sky-600 dark:bg-sky-900/40 dark:text-sky-400">
+                                <div class="jr-theme-soft mb-5 flex h-12 w-12 items-center justify-center rounded-xl text-xl">
                                     <i :class="feature.icon"></i>
                                 </div>
                                 <h3 class="text-lg font-bold">{{ feature.title }}</h3>
@@ -246,16 +241,16 @@ const features = [
 
                 <!-- Final CTA -->
                 <section class="px-6 py-24">
-                    <div class="mx-auto max-w-5xl rounded-3xl bg-gradient-to-r from-sky-700 to-sky-500 px-8 py-16 text-center text-white shadow-xl shadow-sky-500/20">
+                    <div class="jr-theme-cta mx-auto max-w-5xl rounded-3xl px-8 py-16 text-center shadow-xl">
                         <h2 class="text-3xl font-bold sm:text-4xl">
                             Ready to build your next project?
                         </h2>
-                        <p class="mx-auto mt-5 max-w-xl text-sky-100">
+                        <p class="mx-auto mt-5 max-w-xl">
                             Start with JR SkyFlow and focus on the features that matter.
                         </p>
                         <Link
                             :href="canRegister ? '/register' : canLogin ? '/login' : '#features'"
-                            class="mt-8 inline-flex items-center gap-3 rounded-xl bg-white px-7 py-3 font-bold text-sky-700 transition hover:bg-sky-50"
+                            class="jr-theme-text mt-8 inline-flex items-center gap-3 rounded-xl bg-white px-7 py-3 font-bold transition hover:bg-slate-50"
                         >
                             Get Started <i class="pi pi-arrow-right"></i>
                         </Link>
@@ -272,7 +267,7 @@ const features = [
                         <!-- Branding -->
                         <div class="text-center sm:text-left">
                             <div class="text-lg font-bold">
-                                JR <span class="text-sky-600 dark:text-sky-400">SkyFlow</span>
+                                JR <span class="jr-theme-heading">SkyFlow</span>
                             </div>
                             <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
                                 Laravel + Vue Starter Kit
@@ -286,7 +281,7 @@ const features = [
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="Visit my GitHub profile"
-                                class="text-slate-500 transition hover:text-sky-600 dark:text-slate-400"
+                                class="jr-theme-link text-slate-500 transition dark:text-slate-400"
                             >
                                 <i class="pi pi-github text-xl"></i>
                             </a>
@@ -296,7 +291,7 @@ const features = [
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="Visit my Facebook profile"
-                                class="text-slate-500 transition hover:text-sky-600 dark:text-slate-400"
+                                class="jr-theme-link text-slate-500 transition dark:text-slate-400"
                             >
                                 <i class="pi pi-facebook text-xl"></i>
                             </a>
@@ -307,7 +302,7 @@ const features = [
                         <p class="text-sm text-slate-500 dark:text-slate-400">
                             © {{ new Date().getFullYear() }} JR SkyFlow.
                             Built by
-                            <span class="font-semibold text-sky-600 dark:text-sky-400">
+                            <span class="jr-theme-text font-semibold">
                                 Joshua Martin S. Ramiro
                             </span>.
                         </p>

@@ -1,3 +1,89 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* JR SkyFlow dynamic theme */
+
+:root {
+    --jr-primary: #0284c7;
+    --jr-secondary: #9333ea;
+    --jr-accent-solid: #0284c7;
+    --jr-accent-background: #0284c7;
+    --jr-button-background: #0276b3;
+    --jr-accent-text: #075985;
+    --jr-accent-text-dark: #7dd3fc;
+    --jr-accent-contrast: #ffffff;
+    --jr-text-background: linear-gradient(135deg, #075985, #6b21a8);
+    --jr-text-background-dark: linear-gradient(135deg, #7dd3fc, #d8b4fe);
+}
+
+/* Solid or gradient branded backgrounds */
+.jr-theme-background {
+    background: var(--jr-button-background);
+    color: var(--jr-accent-contrast);
+}
+
+/* Theme-aware solid accent text */
+.jr-theme-text {
+    color: var(--jr-accent-text);
+}
+
+.app-dark .jr-theme-text { color: var(--jr-accent-text-dark); }
+
+.jr-theme-heading { color: var(--jr-accent-text); }
+.app-dark .jr-theme-heading { color: var(--jr-accent-text-dark); }
+[data-jr-color-mode="gradient"] .jr-theme-heading {
+    background: var(--jr-text-background);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.app-dark[data-jr-color-mode="gradient"] .jr-theme-heading { background: var(--jr-text-background-dark); background-clip: text; -webkit-background-clip: text; }
+
+.jr-theme-soft {
+    background: color-mix(in srgb, var(--jr-primary) 12%, white);
+    color: var(--jr-accent-text);
+}
+.app-dark .jr-theme-soft {
+    background: color-mix(in srgb, var(--jr-primary) 22%, #0f172a);
+    color: var(--jr-accent-text-dark);
+}
+
+.jr-theme-border { border-color: color-mix(in srgb, var(--jr-primary) 30%, transparent); }
+.jr-theme-link:hover { color: var(--jr-accent-text); }
+.app-dark .jr-theme-link:hover { color: var(--jr-accent-text-dark); }
+.jr-theme-card:hover { border-color: var(--jr-primary); }
+.jr-theme-glow { background: var(--jr-accent-background); opacity: 0.16; }
+.jr-theme-chart-stop { stop-color: var(--jr-primary); }
+.jr-theme-chart-line { stroke: var(--jr-primary); }
+
+/* Primary branded button */
+.jr-theme-button {
+    background: var(--jr-button-background);
+    color: var(--jr-accent-contrast);
+    border: 0;
+    transition:
+        filter 0.2s ease,
+        transform 0.2s ease;
+}
+
+.jr-theme-cta { background: var(--jr-button-background); color: var(--jr-accent-contrast); }
+
+.jr-theme-button:hover {
+    filter: brightness(0.9);
+}
+
+.jr-theme-button:active {
+    transform: scale(0.98);
+}
+
+/* Focus indicators */
+.jr-theme-focus:focus-visible {
+    outline: 2px solid var(--jr-accent-solid);
+    outline-offset: 2px;
+}
+
+.jr-theme-input:focus { border-color: var(--jr-primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--jr-primary) 25%, transparent); outline: none; }
+.jr-theme-checkbox { accent-color: var(--jr-primary); }
+.jr-theme-checkbox:focus-visible { outline: 2px solid var(--jr-primary); outline-offset: 2px; }

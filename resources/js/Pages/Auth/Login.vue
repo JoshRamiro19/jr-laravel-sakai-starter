@@ -82,9 +82,7 @@ const submit = () => {
                 <Link
                     v-if="canResetPassword"
                     :href="route('password.request')"
-                    class="rounded-md text-sm text-slate-600 underline hover:text-sky-600
-                            focus:outline-none focus:ring-2 focus:ring-sky-500 dark:text-slate-300
-                            dark:hover:text-sky-400"
+                    class="jr-theme-link jr-theme-focus rounded-md text-sm text-slate-600 underline focus:outline-none dark:text-slate-300"
                 >
                     Forgot your password?
                 </Link>
@@ -104,7 +102,7 @@ const submit = () => {
 
                     <Link
                         :href="route('register')"
-                        class="ml-1 font-semibold text-sky-600 transition hover:text-sky-700 hover:underline dark:text-sky-400 dark:hover:text-sky-300"
+                        class="jr-theme-text ml-1 font-semibold transition hover:underline"
                     >
                         Create an account
                     </Link>
