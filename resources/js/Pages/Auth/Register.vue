@@ -109,13 +109,15 @@ const submit = () => {
                 </PrimaryButton>
             </div>
             
-            <div class="mt-6 border-t border-slate-100 pt-5 text-center">
-                <p class="text-sm text-slate-500">
+            <div
+                class="mt-6 border-t border-slate-200 pt-5 text-center dark:border-slate-700"
+            >
+                <p class="text-sm text-slate-500 dark:text-slate-400">
                     Already have an account?
 
                     <Link
                         :href="route('login')"
-                        class="ml-1 font-semibold text-sky-600 transition hover:text-sky-700 hover:underline"
+                        class="ml-1 font-semibold text-sky-600 transition hover:text-sky-700 hover:underline dark:text-sky-400 dark:hover:text-sky-300"
                     >
                         Sign in
                     </Link>

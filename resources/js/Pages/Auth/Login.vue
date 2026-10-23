@@ -72,9 +72,9 @@ const submit = () => {
             <div class="mt-4 block">
                 <label class="flex items-center">
                     <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ms-2 text-sm text-gray-600"
-                        >Remember me</span
-                    >
+                    <span class="ms-2 text-sm text-slate-600 dark:text-slate-300">
+                        Remember me
+                    </span>
                 </label>
             </div>
 
@@ -82,7 +82,9 @@ const submit = () => {
                 <Link
                     v-if="canResetPassword"
                     :href="route('password.request')"
-                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    class="rounded-md text-sm text-slate-600 underline hover:text-sky-600
+                            focus:outline-none focus:ring-2 focus:ring-sky-500 dark:text-slate-300
+                            dark:hover:text-sky-400"
                 >
                     Forgot your password?
                 </Link>
@@ -96,13 +98,13 @@ const submit = () => {
                 </PrimaryButton>
             </div>
             
-            <div class="mt-6 border-t border-slate-100 pt-5 text-center">
-                <p class="text-sm text-slate-500">
+            <div class="mt-6 border-t border-slate-200 pt-5 text-center dark:border-slate-700">
+                <p class="text-sm text-slate-500 dark:text-slate-400">
                     Don't have an account?
 
                     <Link
                         :href="route('register')"
-                        class="ml-1 font-semibold text-sky-600 transition hover:text-sky-700 hover:underline"
+                        class="ml-1 font-semibold text-sky-600 transition hover:text-sky-700 hover:underline dark:text-sky-400 dark:hover:text-sky-300"
                     >
                         Create an account
                     </Link>
