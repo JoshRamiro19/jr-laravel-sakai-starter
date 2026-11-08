@@ -82,7 +82,7 @@ const submit = () => {
                 <Link
                     v-if="canResetPassword"
                     :href="route('password.request')"
-                    class="jr-theme-link jr-theme-focus rounded-md text-sm text-slate-600 underline focus:outline-none dark:text-slate-300"
+                    class="jr-theme-link jr-theme-focus rounded-md text-sm text-slate-600 underline focus:outline-hidden dark:text-slate-300"
                 >
                     Forgot your password?
                 </Link>

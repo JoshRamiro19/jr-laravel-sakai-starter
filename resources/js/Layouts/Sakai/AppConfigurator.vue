@@ -208,7 +208,7 @@ function onPresetChange() {
                         type="button"
                         :title="primaryColor.name"
                         @click="updateColors('primary', primaryColor)"
-                        :class="['border-none w-5 h-5 rounded-full p-0 cursor-pointer outline-none outline-offset-1', { 'outline-primary': layoutConfig.primary === primaryColor.name }]"
+                        :class="['border-none w-5 h-5 rounded-full p-0 cursor-pointer outline-hidden outline-offset-1', { 'outline-primary': layoutConfig.primary === primaryColor.name }]"
                         :style="{ backgroundColor: `${primaryColor.name === 'noir' ? 'var(--text-color)' : primaryColor.palette['500']}` }"
                     ></button>
                 </div>
@@ -223,7 +223,7 @@ function onPresetChange() {
                         :title="surface.name"
                         @click="updateColors('surface', surface)"
                         :class="[
-                            'border-none w-5 h-5 rounded-full p-0 cursor-pointer outline-none outline-offset-1',
+                            'border-none w-5 h-5 rounded-full p-0 cursor-pointer outline-hidden outline-offset-1',
                             { 'outline-primary': layoutConfig.surface ? layoutConfig.surface === surface.name : isDarkTheme ? surface.name === 'zinc' : surface.name === 'slate' }
                         ]"
                         :style="{ backgroundColor: `${surface.palette['500']}` }"
